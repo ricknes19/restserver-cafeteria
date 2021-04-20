@@ -7,8 +7,13 @@ const usuariosGet = (req, res = response) => {
 }
 
 const usuariosPost = (req, res = response) => {
+
+    const { nombre, edad } = req.body;
+
     res.status(201).json({
-       msg: 'POST - controlador'
+       msg: 'POST - controlador',
+       nombre,
+       edad
     });
 }
 
