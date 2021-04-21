@@ -1,8 +1,17 @@
-const { response } = require('express');
+const { response, request } = require('express');
 
-const usuariosGet = (req, res = response) => {
+const usuariosGet = (req = request, res = response) => {
+    
+    // Parámetros query
+    const { q, nombre = "No hay nombre", apikey, page = 1, limit} = req.query;
+
     res.json({
-       msg: 'GET - controlador'
+       msg: 'GET - controlador',
+       q,
+       nombre,
+       apikey,
+       page,
+       limit
     });
 }
 
@@ -17,9 +26,14 @@ const usuariosPost = (req, res = response) => {
     });
 }
 
-const usuariosPut = (req, res = response) => {
+const usuariosPut = (req = request, res = response) => {
+    
+    // Parámetro de segmento
+    const { id } = req.params;
+
     res.json({
-       msg: 'PUT - controlador'
+       msg: 'PUT - controlador',
+       id
     });
 }
 
